@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>商品供应价格</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome5-overrides.min.css">
+	<link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+ 
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+ 
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function () {
+    	$('#myTable').DataTable();
+		} );
+	</script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><img src="../static/img/logo1.png"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>门店信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>供应商信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>商品信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>采购信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="deliver.html"><i class="fas fa-table"></i><span>销售记录</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="register.html"><i class="fas fa-user-circle"></i><span>派送信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="blank.html"><i class="fas fa-window-maximize"></i><span>仓库信息</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+					
+                    <div class="container-fluid">
+                        <h1>Hello! John White</h1>
+                    </div>
+					  <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="width:200px"><a class="nav-link active border-bottom-primary " href="#" style="color: var(--bs-blue);">First Item</a></li>
+                    <li class="nav-item" style="width:200px"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" style="width:200px"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item " style="width:200px"><a  class="nav-link  text-danger" href="#" >Log Out &ensp;  <i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+                </nav>
+
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Deliver</h3>
+                    <div class="card shadow">
+                        <div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold"></p>
+                        </div>
+                        <div class="card-body">
+                            <div id="tableshow"></div>
+
+    							
+    							 <table class="table my-0" id="myTable">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th style="width: 140px;">单号</th>
+                                                <th style="width: 200px;">发货时间 </th>
+                                                <th style="width: 200px;">receive</th>
+                                                <th style="width: 140px;">number</th>
+                                                <th style="width: 140px;"> branch</th>
+                                                <th style="width: 140px;"> storage</th>
+                                                <th style="width: 140px;">item_id</th>
+                                                <th style="width: 140px;">stuff</th>
+                                                
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+											{% csrf_token %}
+											{% if bill_lists %}
+                                            {% for bill in bill_lists %}
+                                            <tr>
+                                                <td style="width: 140px;"><output style="width: 140px;">{{bill.goods_delivery_id}}</output></td>
+                                                <td style="width: 200px;"><output style="width: 140px;">{{bill.goods_delivery_send_time}}</output></td>
+                                                <td style="width: 200px;"><output style="width: 140px;">{{bill.goods_delivery_receive_time}}</output></td>
+                                                <td style="width: 140px;"><output style="width: 140px;">{{bill.goods_num}}</output></td>
+                                                <td style="width: 140px;"><output style="width: 140px;">{{bill.delivery_branch_id.branch_id}}</output></td>
+                                                <td style="width: 140px;"><output style="width: 140px;">{{bill.delivery_storage_id.storage_id}}</output></td>
+                                                <td style="width: 140px;"> <output style="width: 140px;">{{bill.delivery_goods_id.goods_id}}</output></td>
+                                                <td style="width: 140px;"><output style="width: 140px;">{{bill.goods_delivery_staff_id.user_account}}</output></td>
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                           {% endif %}
+                                   
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td style="width: 140px;" ><strong>单号</strong></td>
+                                                <td style="width: 200px;"><strong>发货时间</strong></td>
+                                                <td style="width: 200px;"><strong>收货时间</strong></td>
+                                                <td style="width: 140px;"><strong>数量</strong></td>
+                                                <td style="width: 140px;"><strong>门店号</strong></td>
+                                                <td style="width: 140px;"><strong>仓库号</strong></td>
+                                                <td style="width: 140px;"><strong>商品码</strong></td>
+                                                <td style="width: 140px;"><strong>员工号</strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <script type="text/javascript">
+        function dltRow(index){
+            var tr = index.parentNode.parentNode;
+            tr.parentNode.removeChild(tr);
+        }
+        function change(index){
+            var newform=document.createElement("form");
+            var row=index.parentNode.parentNode;//table row
+            var cells=row.getElementsByTagName("td");//get all tablecells
+            var newcells=[];
+            console.log(row);
+            console.dir(row);
+            console.log(cells);
+            for(var i=0;i<cells.length-1;i++){
+                newcells[i]=document.createElement("input");
+            
+                newcells[i].type="number";
+
+                newcells[i].value=cells[i].innerHTML;
+                cells[i].innerHTML="";
+                cells[i].appendChild(newcells[i]);
+            }
+            cells[cells.length-1].innerHTML="";
+            var confirm=document.createElement("button");
+            confirm.innerHTML="confirm";
+            confirm.type="submit";
+            cells[cells.length-1].appendChild(confirm);
+
+        }
+    
+</script>
+{{data|safe}}
+</body>
+
+</html>

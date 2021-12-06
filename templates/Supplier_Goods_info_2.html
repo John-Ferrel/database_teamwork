@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>商品采购</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome5-overrides.min.css">
+	<link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+ 
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+ 
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function () {
+    	$('#myTable').DataTable(
+		 {
+   "columnDefs": [
+       { "orderable": false, "targets": 2 }
+     ]
+} );
+	</script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><img src="../static/img/logo1.png"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>门店信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>供应商信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>商品信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>采购信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="deliver.html"><i class="fas fa-table"></i><span>销售记录</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="register.html"><i class="fas fa-user-circle"></i><span>派送信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="blank.html"><i class="fas fa-window-maximize"></i><span>仓库信息</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+					
+                    <div class="container-fluid">
+                        <h1>Hello! John White</h1>
+                    </div>
+					  <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="width:200px"><a class="nav-link active border-bottom-primary " href="#" style="color: var(--bs-blue);">First Item</a></li>
+                    <li class="nav-item" style="width:200px"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" style="width:200px"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item " style="width:200px"><a  class="nav-link  text-danger" href="#" >Log Out &ensp;  <i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+                </nav>
+	
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Deliver</h3>
+					<div class="card shadow">
+                        <div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold text-center">新增</p>
+                        </div>
+						
+                        <div class="card-body">
+                            <div id="tableshow"></div>
+
+    							
+    							 <table class="table table-bordered  my-0 table-hover" id="myTable1">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center" style="width: 400px; ">店内码</th>
+                                              
+                                                <th  class="text-center" style="width: 400px;"> 采购价</th>
+											   	<th class="text-center"  style=" width:200px">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+											<form>
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;"><input placeholder="店内码：商品码+供应商编号" type="number" name="new_SKU" required
+                                   autocomplete="off"></td>
+                                                
+                                                <td  class="text-center" style="width: 200px;"><input placeholder="采购价格" type="number" step="0.01"  min="0"
+                                   name="new_order_price" autocomplete="off"></td>
+												<td  class="text-center" style="width: 100px;"> <button class="btn bg-primary" style="color:white" type="submit"  >提交 </button>&nbsp;<button class="btn bg-danger" style="color:white"  type="reset" >重置</button></td>
+												
+                                              
+                                            </tr>
+                                       </form>
+                                                
+                                   
+
+                                        </tbody>
+                                        
+                                    </table>
+                                
+                        </div>
+						{% if Edit_id %}
+						<div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold text-center">修改</p>
+                        </div>
+						<div class="card-body">
+                            <div id="tableshow2"></div>
+
+    							
+    							 <table class="table table-bordered  my-0 table-hover" id="myTable2">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center" style="width: 400px; ">店内码</th>
+                                              
+                                                <th  class="text-center" style="width: 400px;"> 采购价</th>
+											   	<th class="text-center"  style=" width:200px">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+											<form action="/supplier_goods_info/" method="POST" class="ui form">
+												 {% csrf_token %}
+                                            <tr>
+												<label for="edit_SKU"></label>
+                                                <td class="text-center" style="width: 200px;"><input type="number" name="edit_SKU" value="{{Edit_object.SKU}}" style= "width: 200px;"></td>
+                                                
+                                                <td  class="text-center"  style="width: 200px;"><input type="number" step="0.01"  min="0" name="edit_order_price" value="{{Edit_object.order_price}}" style="width: 200px;"></td>
+												<td  class="text-center" style="width: 100px;"> <button class="btn bg-primary" style="color:white" type="submit" value="确认修改" >提交 </button>&nbsp;<button class="btn bg-danger" style="color:white"  type="reset" >重置</button></td>
+												
+                                              
+                                            </tr>
+                                       </form>
+                                                
+                                   
+
+                                        </tbody>
+                                        
+                                    </table>
+                                
+                        </div>
+						 {% endif %}
+                    </div>
+					<br>
+					
+                    <div class="card shadow">
+                        <div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold text-center">内容</p>
+                        </div>
+                        <div class="card-body">
+                            
+
+    							
+    							 <table class="table table-bordered  my-0 table-hover" id="myTable">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center" style="width: 400px; ">店内码</th>
+                                              
+                                                <th  class="text-center" style="width: 400px;"> 采购价</th>
+											   	<th class="text-center"  style=" width:200px">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+											{% csrf_token %}
+											{% if goods_lists %}
+                                            {% for good in goods_lists %}
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;"><output style="width: 200px;">{{good.SKU}}</output></td>
+                                                
+                                                <td  class="text-center" style="width: 200px;"><output style="width: 200px;">{{good.order_price}}</output></td>
+												<td  class="text-center" style="width: 100px;"> <a class="btn bg-primary" style="color:white"  href="/supplier_goods_info/?Edit_id={{good.SKU}}">修改 </a>&nbsp;<a  style="color:white"  class="btn bg-danger" href="/supplier_goods_info/?Delete_id={{good.SKU}}">删除</a></td>
+												
+                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                           {% endif %}
+                                   
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="text-center" style="width: 400px;" ><strong>店内码</strong></td>
+                                                <td class="text-center" style="width: 400px;"><strong>采购价</strong></td>
+                                             	 <th class="text-center" style=" width:200px">操作</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/theme.js"></script>
+</body>
+</html>

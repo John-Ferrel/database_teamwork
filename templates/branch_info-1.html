@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Branch_info</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome5-overrides.min.css">
+    <link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+ 
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+ 
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#myTable').DataTable({
+   "columnDefs": [
+       { "orderable": false, "targets": 3 }
+     ]
+}
+        );
+        } );
+        
+        $(document).ready(function(){
+              $("#item-add-btn").click(function(){
+              $("#item-search1").hide();
+              $("#item-search2").hide();
+              $("#item-add1").show();
+              $("#item-add2").show();
+              $("#item-add-btn").attr("style","color: var(--bs-blue);");
+              $("#item-search-btn").attr("style","color:rgb(133, 135, 150)");
+			
+              });
+              $("#item-search-btn").click(function(){
+              $("#item-add1").hide();
+              $("#item-add2").hide();
+              $("#item-search1").show();
+              $("#item-search2").show();
+              $("#item-search-btn").attr("style","color: var(--bs-blue);");
+              $("#item-add-btn").attr("style","color:rgb(133, 135, 150)");
+              });
+            });
+    </script>
+</head>
+
+<body id="page-top" onload="Select_record()">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <br>
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                
+                    <div class="sidebar-brand-icon rotate-n-15"><img src="../static/img/logo1.png"></div>
+                    <div class="sidebar-brand-text mx-3"><br><span>S&nbsp;M</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fa fa-sitemap"></i><span>门店信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-weight-hanging"></i><span>供应商信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="index.html"><i class="fa fa-shopping-cart"></i><span>商品信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="index.html"><i class="fa fa-wpforms"></i><span>采购信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="deliver.html"><i class="fas fa-table"></i><span>销售记录</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="register.html"><i class="fa fa-car"></i><span>派送信息</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="blank.html"><i class="fas fa-window-maximize"></i><span>仓库信息</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    
+                    <div class="container-fluid">
+                        <h1>Hello! John White</h1>
+                    </div>
+                      <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="width:200px"><a class="nav-link active fw-bold" href="#" id="item-add-btn" >查询、删除与修改</a></li>
+                    <li class="nav-item" style="width:200px"><a class="nav-link text-center fw-bold" style="color: var(--bs-blue);" id="item-search-btn" href="#">高级搜索与精确查询</a></li>
+                    <li class="nav-item " style="width:200px"><a  class="nav-link  text-danger" href="#" >Log Out &ensp;  <i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+                </nav>
+    
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Deliver</h3>
+                    <div class="card shadow">
+                        <div class="card-header" style="color: var(--bs-light);" id="item-add1">
+                            <p class="text-primary m-0 fw-bold text-center">新增</p>
+                        </div>
+                        
+                        <div class="card-body" id="item-add2">
+                            <div id="tableshow"></div>
+
+                                
+                                 <table class="table table-bordered  my-0 table-hover" id="myTable1">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center" style="width: 200px; " >门店编号</th>
+                                              <th class="text-center" style="width: 200px; " >门店分区</th>
+											   <th class="text-center" style="width: 200px; " >门店地址</th>
+											   
+                                                <th class="text-center"  style=" width:200px">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+                                            <form action="/supplier_goods_info/" method="POST" class="ui form">
+                                                {% csrf_token %}
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;"><input placeholder="门店编号" type="number" name="new_branch_id" required
+                                   autocomplete="off"></td>
+												<td class="text-center" style="width: 200px;"><input placeholder="门店分区" type="text" step="0.01"  min="0"
+                                   name="new_branch_district" autocomplete="off"></td>
+												<td class="text-center" style="width: 200px;"> <input placeholder="门店地址" type="text" step="0.01"  min="0"
+                                   name="new_branch_address" autocomplete="off"></td>
+												
+                                                <td  class="text-center" style="width: 200px;"> <button class="btn bg-primary" style="color:white" type="submit" value="确认加入"  >提交 </button>&nbsp;<button class="btn bg-danger" style="color:white"  type="reset" >重置</button></td>
+                                                
+                                              
+                                            </tr>
+                                       </form>
+                                                
+                                   
+
+                                        </tbody>
+                                        
+                                    </table>
+                                
+                        </div>
+                        <div class="card-header" style="color: var(--bs-light);" id="item-search1">
+                            <p class="text-primary m-0 fw-bold text-center">查询搜索</p>
+                        </div>
+                        
+                        <div class="card-body" id="item-search2">
+                            <div id="tableshow2"></div>
+
+                                
+                                 <table class="table table-bordered  my-0 table-hover" id="myTable2">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center"  style=" width:200px"></th>
+											   <th class="text-center"  style=" width:200px"></th>
+											   <th class="text-center"  style=" width:200px"></th>
+												<th class="text-center"  style=" width:200px"></th>
+											   
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+                                            <form action="/supplier_goods_info/" method="POST" class="ui form">
+                                                {% csrf_token %}
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;">门店编号:<input style="font-size: 15pt; margin-top:0px" placeholder="门店编号：00-10" type="text"
+                                   name="Search_branch_id" value="{{All_request.Search_branch_id}}"></td>
+                                                
+                                                <td  class="text-center" style="width: 200px;" >门店分区:<input placeholder="门店分区"
+                               type="text" name="Search_district" value="{{All_request.Search_district}}"></td>
+                                                <td  class="text-center" style="width: 200px;" >门店地址:<input placeholder="门店地址"
+                               type="text" name="Search_address" value="{{All_request.Search_address}}"></td>
+												<td  class="text-center" style="width: 200px;" >商品单位:<input style="font-size: 15pt; margin-top:0px" placeholder="商品单位" type="text"
+                                   name="Search_goods_unit" value="{{All_request.Search_goods_unit}}"></td>
+											</tr>
+											
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;"><select name="Level_1" style="font-size: 15pt; margin-top:10px" id="Level_1">
+													<option value="">一级排序依据</option>
+													<option value="branch_id_incr">门店编号(升序)</option>
+													<option value="branch_id_desc">门店编号(降序)</option>
+													<option value="branch_district_incr">门店分区(升序)</option>
+													<option value="branch_district_desc">门店分区(降序)</option>
+													<option value="branch_address_incr">门店地址(升序)</option>
+													<option value="branch_address_desc">门店地址(降序)</option>
+												</select></td>
+                                                <td class="text-center" style="width: 200px;"> <select name="Level_2" style="font-size: 15pt; margin-top:10px" id="Level_2">
+													<option value="">二级排序依据</option>
+													<option value="branch_id_incr">门店编号(升序)</option>
+													<option value="branch_id_desc">门店编号(降序)</option>
+													<option value="branch_district_incr">门店分区(升序)</option>
+													<option value="branch_district_desc">门店分区(降序)</option>
+													<option value="branch_address_incr">门店地址(升序)</option>
+													<option value="branch_address_desc">门店地址(降序)</option>
+												</select></td>
+												<td class="text-center" style="width: 200px;"><select name="Level_3" style="font-size: 15pt; margin-top:10px" id="Level_3">
+													<option value="">三级排序依据</option>
+													<option value="branch_id_incr">门店编号(升序)</option>
+													<option value="branch_id_desc">门店编号(降序)</option>
+													<option value="branch_district_incr">门店分区(升序)</option>
+													<option value="branch_district_desc">门店分区(降序)</option>
+													<option value="branch_address_incr">门店地址(升序)</option>
+													<option value="branch_address_desc">门店地址(降序)</option>
+												</select></td>
+                                                <td  class="text-center" style="width: 100px;"> <button class="btn bg-primary" style="color:white" type="submit" value="确认"  >提交 </button>&nbsp;<button class="btn bg-danger" style="color:white"  type="reset" >重置</button></td>
+                                            </tr>    
+                                              
+                                            
+                                       </form>
+                                                
+                                   
+
+                                        </tbody>
+                                        
+                                    </table>
+                                
+                        </div>
+                        <script type="text/javascript">
+                            $("#item-add1").hide();
+                            $("#item-add2").hide();</script>
+                        {% if Edit_id %}
+                        <div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold text-center">修改</p>
+                        </div>
+                        <div class="card-body">
+                            <div id="tableshow3"></div>
+
+                                
+                                 <table class="table table-bordered  my-0 table-hover" id="myTable3"> 
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                               <th class="text-center" style="width: 200px; " >门店编号</th>
+                                              <th class="text-center" style="width: 200px; " >门店分区</th>
+											   <th class="text-center" style="width: 200px; " >门店地址</th>
+											   
+                                                <th class="text-center"  style=" width:200px">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+                                            <form action="/branch_info/" method="POST" class="ui form">
+                                                 {% csrf_token %}
+                                            <tr>
+                                                
+                                                <td class="text-center" style="width: 200px;"><input type="number" name="edit_branch_id" value="{{Edit_object.branch_id}}"></td>
+                                                 <td class="text-center" style="width: 200px;"> <input type="text" step="0.01"  min="0" name="edit_branch_district" value="{{Edit_object.branch_district}}"></td> 
+												<td class="text-center" style="width: 200px;">
+												<input type="text" step="0.01"  min="0" name="edit_branch_address" value="{{Edit_object.branch_address}}"></td> 
+												
+                                                <td  class="text-center" style="width: 100px;"> <button class="btn bg-primary" style="color:white" type="submit" value="确认修改" >提交 </button>&nbsp;<button class="btn bg-danger" style="color:white"  type="reset" >重置</button></td>
+                                                
+                                              
+                                            </tr>
+                                       </form>
+                                                
+                                   
+
+                                        </tbody>
+                                        
+                                    </table>
+                                
+                        </div>
+                         {% endif %}
+                    </div>
+                    <br>
+                    
+                    <div class="card shadow">
+                        <div class="card-header" style="color: var(--bs-light);">
+                            <p class="text-primary m-0 fw-bold text-center">内容</p>
+                        </div>
+                        <div class="card-body">
+                            
+
+                                
+                                 <table class="table table-bordered  my-0 table-hover" id="myTable">
+                                        <thead style="height: 3px;">
+                                           <tr>
+                                                <th class="text-center" style="width: 200px; " title="按住'shift'多列排序">门店编号</th>
+                                              <th class="text-center" style="width: 200px; " title="按住'shift'多列排序">门店分区</th>
+											   <th class="text-center" style="width: 200px; " title="按住'shift'多列排序">门店地址</th>
+											   
+                                                <th class="text-center"  style=" width:200px" title="按住'shift'多列排序">操作</th>
+                                                                                          
+                                            </tr>
+                                       
+                                        </thead>
+                                        <tbody>
+                                            {% csrf_token %}
+                                            {% if branch_lists %}
+                                            {% for branch in branch_lists%}
+                                            <tr>
+                                                <td class="text-center" style="width: 200px;"><output>{{branch.branch_id}}</output></td>
+                                                
+                                                <td  class="text-center" style="width: 200px;"><output>{{branch.branch_district}}</output></td>
+												<td><output>{{branch.branch_address}}</output>
+												</td>
+												
+                                                <td  class="text-center" style="width: 200px;"> <a class="btn bg-primary" style="color:white"  href="/branch_info/?Edit_id={{branch.branch_id}}">修改 </a>&nbsp;<a  style="color:white" onclick="dltif(this)" class="btn bg-danger" href="/branch_info/?Delete_id={{branch.branch_id}}">删除</a></td>
+                                                
+                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                           {% endif %}
+                                   
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                               
+												<th class="text-center" style="width: 200px; " ><strong>门店编号</strong></th>
+                                              <th class="text-center" style="width: 200px; " ><strong>门店分区</strong></th>
+											   <th class="text-center" style="width: 200px; " ><strong>门店地址</strong></th>
+											   
+                                                <th class="text-center"  style=" width:200px"><strong>操作</strong></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Sale Manage</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/theme.js"></script>
+<script type="text/javascript">
+	function dltif(){
+	var flag=window.confirm("Delete it?");
+	this.onclick=function(){
+		if(!flag) {
+			flag=true;
+			return false;
+		}
+	}
+}
+</script>
+
+<script type="text/javascript">
+    function Select_record() {
+        if('{{All_request.branch_id_Sort}}' == 'branch_id_incr')
+            document.getElementById("branch_id_Sort").selectedIndex = 1;
+        else if('{{All_request.branch_id_Sort}}' == 'branch_id_desc')
+            document.getElementById("branch_id_Sort").selectedIndex = 2;
+        if('{{All_request.branch_district_Sort}}' == 'branch_district_incr')
+            document.getElementById("branch_district_Sort").selectedIndex = 1;
+        else if('{{All_request.branch_district_Sort}}' == 'branch_district_desc')
+            document.getElementById("branch_district_Sort").selectedIndex = 2;
+        if('{{All_request.branch_address_Sort}}' == 'branch_address_incr')
+            document.getElementById("branch_address_Sort").selectedIndex = 1;
+        else if('{{All_request.branch_address_Sort}}' == 'branch_address_desc')
+            document.getElementById("branch_address_Sort").selectedIndex = 2;
+
+        switch('{{All_request.Level_1}}'){
+            case 'branch_id_incr':
+                document.getElementById("Level_1").selectedIndex = 1;
+                break;
+            case 'branch_id_desc':
+                document.getElementById("Level_1").selectedIndex = 2;
+                break;
+            case 'branch_district_incr':
+                document.getElementById("Level_1").selectedIndex = 3;
+                break;
+            case 'branch_district_desc':
+                document.getElementById("Level_1").selectedIndex = 4;
+                break;
+            case 'branch_address_incr':
+                document.getElementById("Level_1").selectedIndex = 5;
+                break;
+            case 'branch_address_desc':
+                document.getElementById("Level_1").selectedIndex = 6;
+        }
+
+        switch('{{All_request.Level_2}}'){
+            case 'branch_id_incr':
+                document.getElementById("Level_2").selectedIndex = 1;
+                break;
+            case 'branch_id_desc':
+                document.getElementById("Level_2").selectedIndex = 2;
+                break;
+            case 'branch_district_incr':
+                document.getElementById("Level_2").selectedIndex = 3;
+                break;
+            case 'branch_district_desc':
+                document.getElementById("Level_2").selectedIndex = 4;
+                break;
+            case 'branch_address_incr':
+                document.getElementById("Level_2").selectedIndex = 5;
+                break;
+            case 'branch_address_desc':
+                document.getElementById("Level_2").selectedIndex = 6;
+        }
+        switch('{{All_request.Level_3}}'){
+            case 'branch_id_incr':
+                document.getElementById("Level_3").selectedIndex = 1;
+                break;
+            case 'branch_id_desc':
+                document.getElementById("Level_3").selectedIndex = 2;
+                break;
+            case 'branch_district_incr':
+                document.getElementById("Level_3").selectedIndex = 3;
+                break;
+            case 'branch_district_desc':
+                document.getElementById("Level_3").selectedIndex = 4;
+                break;
+            case 'branch_address_incr':
+                document.getElementById("Level_3").selectedIndex = 5;
+                break;
+            case 'branch_address_desc':
+                document.getElementById("Level_3").selectedIndex = 6;
+        }
+
+    }
+
+</script>
+
+      {{data|safe}}
+</body>
+</html>
