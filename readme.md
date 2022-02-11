@@ -6,7 +6,7 @@
 
 Well,this work is bad, weak, unstable, useless, just a try of using database.
 
-So,never try to use it or improve it rather than re-writing.
+So,never try to use it or improve it rather than re-coding.
 
 Otherwise, you'll feel despair.
 
