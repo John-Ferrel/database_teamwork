@@ -4,10 +4,19 @@
 2021/12/6 15:34
 ---
 
-Well,this work is bad, weak, unstable, useless, just a try of using database.
+## Project Overview
 
-So,never try to use it or improve it rather than re-coding.
+A full-stack web application built with Django backend, Strapboots frontend framework, and MySQL database. This project serves as a learning exercise for database integration and web development.
 
-Otherwise, you'll feel despair.
+## Important Notice
+**Legacy Code Warning: **
+
+This is an early academic project with known stability and architectural issues. The original developer strongly advises against using or building upon this codebase. Consider this repository as a reference implementation only.
+
+## Tech Stack
+Backend: Django (Python)
+Frontend: Strapboots (Bootstrap-based framework)
+Database: Sqlite
+Architecture: MVC pattern with Django templates
 
 ---
