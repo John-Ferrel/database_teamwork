@@ -16,7 +16,7 @@ This is an early academic project with known stability and architectural issues.
 ## Tech Stack
 Backend: Django (Python)
 Frontend: Strapboots (Bootstrap-based framework)
-Database: Sqlite
+Database: MySQL
 Architecture: MVC pattern with Django templates
 
 ---
